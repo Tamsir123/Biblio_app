@@ -5,10 +5,10 @@ FROM node:18-alpine
 WORKDIR /app
 
 # Copier les fichiers package.json et package-lock.json du backend
-COPY backend-gestion-biblio/package*.json ./
+COPY backend-gestion-biblio/package.json backend-gestion-biblio/package-lock.json ./
 
 # Installer les dépendances
-RUN npm ci --only=production && npm cache clean --force
+RUN npm ci --omit=dev && npm cache clean --force
 
 # Copier le reste du code backend
 COPY backend-gestion-biblio/ .
