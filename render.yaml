@@ -1,0 +1,63 @@
+services:
+  # Backend API
+  - type: web
+    name: biblio-backend
+    env: docker
+    dockerfilePath: ./backend-gestion-biblio/Dockerfile
+    dockerContext: ./backend-gestion-biblio/
+    plan: free
+    region: frankfurt
+    branch: main
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 5000
+      - key: JWT_SECRET
+        generateValue: true
+      - key: DB_HOST
+        fromDatabase:
+          name: biblio-mysql
+          property: host
+      - key: DB_USER
+        fromDatabase:
+          name: biblio-mysql
+          property: user
+      - key: DB_PASSWORD
+        fromDatabase:
+          name: biblio-mysql
+          property: password
+      - key: DB_NAME
+        value: bibliotheque_web
+      - key: DB_PORT
+        value: 3306
+      - key: EMAIL_USER
+        value: tamsirjuuf@gmail.com
+      - key: EMAIL_PASS
+        value: xsqb ocbs vmyn yqiy
+      - key: EMAIL_SERVICE
+        value: gmail
+      - key: FRONTEND_URL
+        value: https://biblio-frontend.onrender.com
+
+  # Frontend React App
+  - type: web
+    name: biblio-frontend
+    env: docker
+    dockerfilePath: ./frontend-gestion-biblio/Dockerfile
+    dockerContext: ./frontend-gestion-biblio/
+    plan: free
+    region: frankfurt
+    branch: main
+    envVars:
+      - key: VITE_API_URL
+        value: https://biblio-backend.onrender.com
+
+# Base de données MySQL
+databases:
+  - name: biblio-mysql
+    databaseName: bibliotheque_web
+    user: root
+    plan: free
+    region: frankfurt

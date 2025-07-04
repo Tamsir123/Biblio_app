@@ -1,9 +1,0 @@
-{
-  "build": {
-    "builder": "DOCKER"
-  },
-  "deploy": {
-    "healthcheckPath": "/api/health",
-    "restartPolicyType": "ON_FAILURE"
-  }
-}

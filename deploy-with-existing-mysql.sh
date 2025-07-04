@@ -1,12 +1,8 @@
 #!/bin/bash
 
-# Script de déploiemecho "📁 Nettoyageecho "🚀 Démarrage des servicesecho "📋 Commandes utiles :"
-echo "   Voir les logs: docker compose logs -f"
-echo "   Arrêter: docker compose down"
-echo "   Redémarrer: docker compose restart"
-echo "   Logs backend: docker compose logs -f backend"
-echo "   Logs frontend: docker compose logs -f frontend"
-echo "   Tester les images: curl http://localhost:5000/uploads/covers/"ocker compose up -d
+# Script de déploiement pour l'application Biblio (avec MySQL existant)
+
+echo "🚀 Déploiement de l'application Bibliothèque..."
 
 echo "⏳ Attente du démarrage des services..."
 sleep 30
