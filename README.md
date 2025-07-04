@@ -156,35 +156,6 @@ Pour importer le schéma manuellement :
 mysql -h 127.0.0.1 -P 4002 -u root -p'Tam@1#' bibliotheque_web < backend-gestion-biblio/database/schema_complet.sql
 ```
 
-## Production (Render)
-
-L'application est déployée sur Render avec les services suivants :
-
-### URLs de production
-- **Frontend** : https://biblio-frontend.onrender.com
-- **Backend API** : https://biblio-backend.onrender.com
-- **Health Check** : https://biblio-backend.onrender.com/api/health
-
-### Architecture Render
-- **Frontend** : Service web Docker (Nginx + React build)
-- **Backend** : Service web Docker (Node.js + Express)
-- **Base de données** : Service MySQL Render
-
-### Déploiement automatique
-Le déploiement se fait automatiquement via GitHub :
-1. Push sur la branche `main`
-2. Render détecte les changements
-3. Build et déploiement automatiques selon `render.yaml`
-
-### Vérification du déploiement
-Voir le guide détaillé : [VERIFICATION-RENDER.md](./VERIFICATION-RENDER.md)
-
-### Configuration Render
-- Configuration complète dans `render.yaml`
-- Variables d'environnement automatiquement configurées
-- CORS configuré pour accepter les requêtes inter-services
-- Volume uploads intégré pour la persistance des images
-
 ## Développement
 
 Pour le développement local, vous pouvez utiliser :
