@@ -3,7 +3,7 @@ services:
   - type: web
     name: biblio-backend
     env: docker
-    dockerfilePath: ./backend-gestion-biblio/Dockerfile
+    dockerfilePath: ./Dockerfile.backend
     dockerContext: ./
     plan: free
     region: frankfurt
@@ -45,7 +45,7 @@ services:
   - type: web
     name: biblio-frontend
     env: docker
-    dockerfilePath: ./frontend-gestion-biblio/Dockerfile
+    dockerfilePath: ./Dockerfile.frontend
     dockerContext: ./
     plan: free
     region: frankfurt
