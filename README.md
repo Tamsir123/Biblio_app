@@ -1,36 +1,206 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 📚 Application de Gestion de Bibliothèque
 
-## Getting Started
+## 🎓 Projet Étudiant - Tamsir
 
-First, run the development server:
+Application complète de gestion de bibliothèque développée avec **React.js**, **Node.js**, **Express** et **MySQL**.
 
+## 🚀 Technologies utilisées
+
+- **Frontend**: React.js, Vite, Tailwind CSS, TypeScript
+- **Backend**: Node.js, Express.js, JWT Authentication
+- **Base de données**: MySQL
+- **Upload**: Multer pour la gestion des images
+- **Email**: Nodemailer (Gmail)
+- **Déploiement**: Docker, Railway
+- **Sécurité**: CORS, Helmet, Rate Limiting
+
+## ✨ Fonctionnalités complètes
+
+### 🔐 Authentification et Autorisation
+- Inscription/Connexion sécurisée avec JWT
+- Gestion des rôles (Admin/Utilisateur)
+- Protection des routes et APIs
+
+### 📚 Gestion des livres
+- CRUD complet pour les livres
+- Upload d'images de couverture
+- Recherche et filtrage avancés
+- Catégorisation par genres
+
+### 👥 Gestion des utilisateurs
+- Profils utilisateurs personnalisables
+- Upload de photos de profil
+- Historique d'activités
+- Statistiques personnelles
+
+### 📄 Système d'emprunts
+- Emprunt et retour de livres
+- Gestion des dates d'échéance
+- Renouvellement automatique
+- Calcul de pénalités
+
+### ⭐ Avis et commentaires
+- Système de notation (1-5 étoiles)
+- Commentaires détaillés
+- Modération des avis
+
+### 📧 Notifications intelligentes
+- Rappels d'échéance par email
+- Notifications de nouveaux livres
+- Alertes administratives
+
+### 📊 Dashboard administrateur
+- Analytics en temps réel
+- Statistiques d'utilisation
+- Gestion des utilisateurs
+- Rapports détaillés
+
+### 🖼️ Gestion des médias
+- Upload sécurisé d'images
+- Compression automatique
+- Stockage persistant avec volumes Docker
+
+## 🔑 Comptes de démonstration
+
+### Administrateur
+- **Email**: admin@biblio.com
+- **Mot de passe**: admin123
+
+### Utilisateur standard
+- **Email**: user@biblio.com  
+- **Mot de passe**: user123
+
+## 🐳 Déploiement avec Docker
+
+### Prérequis
+- Docker et Docker Compose installés
+- MySQL en cours d'exécution (container mysql_projet_dev)
+
+### Démarrage local
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+# Cloner le projet
+git clone [URL_DU_REPO]
+cd Biblio_app
+
+# Démarrer avec Docker Compose
+./deploy-with-existing-mysql.sh
+
+# Ou manuellement
+docker compose up -d
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Accès local
+- **Frontend**: http://localhost:3000
+- **Backend API**: http://localhost:5000
+- **Base de données**: localhost:4002
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🚀 Déploiement sur Railway
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Étapes rapides
+1. Fork ce repository sur GitHub
+2. Connecter Railway à votre compte GitHub
+3. Importer le projet depuis GitHub
+4. Ajouter une base de données MySQL
+5. Configurer les variables d'environnement (voir `.env.railway`)
+6. Déployer automatiquement !
 
-## Learn More
+### Variables d'environnement Railway
+Voir le fichier `.env.railway` pour la configuration complète.
 
-To learn more about Next.js, take a look at the following resources:
+## 📱 Structure du projet
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```
+Biblio_app/
+├── backend-gestion-biblio/          # API Node.js/Express
+│   ├── controllers/                 # Logique métier
+│   ├── models/                      # Modèles de données
+│   ├── routes/                      # Routes API
+│   ├── middleware/                  # Middlewares (auth, upload, etc.)
+│   ├── services/                    # Services (email, notifications)
+│   ├── uploads/                     # Fichiers uploadés
+│   ├── config/                      # Configuration DB
+│   ├── Dockerfile                   # Container backend
+│   └── server.js                    # Point d'entrée
+├── frontend-gestion-biblio/         # Interface React.js
+│   ├── src/
+│   │   ├── components/              # Composants réutilisables
+│   │   ├── pages/                   # Pages de l'application
+│   │   ├── contexts/                # Contextes React
+│   │   ├── hooks/                   # Hooks personnalisés
+│   │   └── services/                # Services API
+│   ├── Dockerfile                   # Container frontend
+│   └── nginx.conf                   # Configuration Nginx
+├── docker-compose.yml               # Orchestration Docker
+├── railway.json                     # Configuration Railway
+└── README.md                        # Documentation
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```
 
-## Deploy on Vercel
+## 🔧 APIs disponibles
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Authentification
+- `POST /api/auth/register` - Inscription
+- `POST /api/auth/login` - Connexion
+- `POST /api/auth/refresh` - Renouvellement token
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Livres
+- `GET /api/books` - Liste des livres
+- `POST /api/books` - Créer un livre (Admin)
+- `PUT /api/books/:id` - Modifier un livre (Admin)
+- `DELETE /api/books/:id` - Supprimer un livre (Admin)
+
+### Emprunts
+- `GET /api/borrowings` - Historique des emprunts
+- `POST /api/borrowings` - Emprunter un livre
+- `PUT /api/borrowings/:id/return` - Retourner un livre
+
+### Utilisateurs
+- `GET /api/users/profile` - Profil utilisateur
+- `PUT /api/users/profile` - Modifier le profil
+- `POST /api/users/profile/image` - Upload photo de profil
+
+## 📊 Fonctionnalités avancées
+
+### Sécurité
+- Protection CSRF
+- Validation des données d'entrée
+- Hashage des mots de passe (bcrypt)
+- Rate limiting
+- Headers de sécurité
+
+### Performance
+- Compression des réponses
+- Cache des ressources statiques
+- Optimisation des requêtes SQL
+- Images optimisées
+
+### Monitoring
+- Health checks Docker
+- Logs structurés
+- Métriques d'utilisation
+- Alertes automatiques
+
+## 📧 Contact et Support
+
+**Développeur**: Tamsir  
+**Email**: tamsirjuuf@gmail.com  
+**Projet**: Application de Gestion de Bibliothèque  
+**Framework**: MERN Stack + MySQL
+
+---
+
+## 🎯 Objectifs pédagogiques atteints
+
+✅ **Développement Full-Stack** avec MERN + MySQL  
+✅ **Authentification et autorisation** complètes  
+✅ **Containerisation Docker** avec multi-services  
+✅ **API RESTful** bien structurée  
+✅ **Interface utilisateur moderne** et responsive  
+✅ **Gestion de fichiers** et upload sécurisé  
+✅ **Base de données relationnelle** optimisée  
+✅ **Déploiement cloud** avec Railway  
+✅ **Bonnes pratiques** de développement
+
+---
+
+*Projet réalisé dans le cadre de la formation en développement web*
