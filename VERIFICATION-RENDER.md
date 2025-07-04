@@ -3,9 +3,11 @@
 ## Status du déploiement ✅
 
 Les Dockerfile ont été testés et validés localement :
-- ✅ Backend Dockerfile build réussi
-- ✅ Frontend Dockerfile build réussi  
-- ✅ Code poussé sur GitHub (commit: a00d6e4)
+- ✅ Backend Dockerfile build réussi (depuis racine)
+- ✅ Frontend Dockerfile build réussi (depuis racine)
+- ✅ Dockerfile déplacés à la racine pour compatibilité Render
+- ✅ render.yaml mis à jour avec nouveaux chemins
+- ✅ Code poussé sur GitHub (commit: 6ff6755)
 
 ## URLs de l'application
 
