@@ -156,6 +156,33 @@ Pour importer le schéma manuellement :
 mysql -h 127.0.0.1 -P 4002 -u root -p'Tam@1#' bibliotheque_web < backend-gestion-biblio/database/schema_complet.sql
 ```
 
+## Déploiement avec IP Publique 🌐
+
+Pour rendre l'application accessible depuis l'extérieur via votre adresse IP publique :
+
+### Configuration rapide
+```bash
+# 1. Configurer l'IP publique
+./setup-ip.sh
+
+# 2. Démarrer l'application
+./start-app.sh
+```
+
+### Accès externe
+Une fois configuré, l'application sera accessible via :
+- **Frontend** : `http://VOTRE_IP:3000`
+- **Backend API** : `http://VOTRE_IP:5000/api`
+
+### Guides détaillés
+- [Guide complet IP publique](./DEPLOIEMENT-IP-PUBLIQUE.md)
+- [Guide rapide](./GUIDE-RAPIDE-IP.md)
+
+### Prérequis
+- Ports 3000 et 5000 ouverts dans le firewall
+- Docker et Docker Compose installés
+- Adresse IP publique accessible
+
 ## Développement
 
 Pour le développement local, vous pouvez utiliser :
